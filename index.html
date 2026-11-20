@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pear Music Perfil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* VOICE corporate group site, sober like adidas-group.com/about/profile, warm copy from the brief
+   IDEA a corporate "profile" page: breadcrumb, caps headings, full-width photos, plain text, link lists
+   PICTURE wide campaign photos edge to edge, purpose line set on the photo in a white box
+   COLOUR pure white, ink #111, pear green #B7D94C only as flat fields and buttons, hairline greys
+   TYPE Barlow Semi Condensed 700 caps (DIN-like) + Barlow text
+   LAYOUT one 1240px column, square corners, text under photos, two-column text; phone stacks */
+:root{color-scheme:light;--bg:#fff;--ink:#111;--mut:#555;--pear:#B7D94C;--line:#dcdcdc;--soft:#f4f4f2;--pale:#EEF5D6;--pear2:#E3EFB8}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Barlow,Arial,sans-serif;overflow-x:clip}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.w{max-width:1240px;margin:0 auto;padding-left:max(4vw,16px);padding-right:max(4vw,16px)}
+h1,h2,h3{font-family:"Barlow Semi Condensed",Arial Narrow,sans-serif;font-weight:700;text-transform:uppercase;line-height:1.02;margin:0;letter-spacing:.005em}
+h1{font-size:clamp(44px,6vw,72px)}
+h2{font-size:clamp(30px,3.6vw,44px);margin-bottom:24px}
+h3{font-size:22px;margin-bottom:8px}
+p{margin:0 0 16px;max-width:68ch}
+section{padding:clamp(48px,6vw,80px) 0 0}
+header{position:sticky;top:0;z-index:9;background:#fff;border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;gap:32px;height:64px}
+.logo{display:flex;align-items:center;gap:8px;font:700 24px/1 "Barlow Semi Condensed",sans-serif;text-transform:uppercase;text-decoration:none;flex:none}
+.logo svg{width:22px;height:27px;fill:currentColor;color:var(--ink)}
+.nav{display:flex;gap:26px;overflow-x:auto;scrollbar-width:none;flex:1;height:100%}
+.nav a{flex:none;display:flex;align-items:center;text-decoration:none;font-weight:600;font-size:15px;border-bottom:3px solid transparent}
+.nav a.on{border-color:var(--ink)}
+.util{display:flex;gap:18px;font-size:14px;flex:none}
+.util a{text-decoration:none}
+.subnav{border-top:1px solid var(--line)}
+.subnav .w{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}
+.subnav a{flex:none;padding:12px 0;font-size:14px;text-decoration:none;color:var(--mut)}
+.subnav a.on{color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--ink)}
+.crumb{font-size:14px;color:var(--mut);margin:28px 0 14px}
+.crumb a{color:var(--ink)}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px;align-items:end;padding-bottom:36px}
+.intro p{font-size:20px;line-height:1.5;margin:0}
+.wide{width:100%;object-fit:cover}
+.r21{aspect-ratio:21/9}.r16{aspect-ratio:16/9}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 48px;margin-top:28px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--line)}
+.fact{padding:24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact b{display:block;font:700 clamp(40px,5vw,60px)/1 "Barlow Semi Condensed",sans-serif;white-space:nowrap}
+.fact span{display:block;margin-top:6px;color:var(--mut);font-size:16px}
+.fact.g{background:var(--pear)}
+.fact.g span{color:var(--ink)}
+.small{font-size:14px;color:var(--mut)}
+.more{display:inline-flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:2px}
+.ph{position:relative}
+.ph .say{position:absolute;left:24px;bottom:24px;max-width:min(560px,calc(100% - 48px));background:#fff;padding:20px 24px;font:700 clamp(22px,2.6vw,32px)/1.1 "Barlow Semi Condensed",sans-serif;text-transform:uppercase}
+.ph .say span{background:var(--pear)}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:36px}
+.three div{border-top:3px solid var(--ink);padding-top:16px}
+.three p{font-size:16px;color:#333;margin:0}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;background:var(--ink);color:#fff;font-weight:700;text-decoration:none;border:0;font-size:16px;font-family:inherit;cursor:pointer}
+.btn:hover{background:#333}
+.btn.g{background:var(--pear);color:var(--ink)}
+.btn.g:hover{background:#a5c63a}
+.pod{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;margin-top:32px;align-items:start}
+.cover{aspect-ratio:1;background:var(--pear);padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+.cover svg{width:44px;height:53px;fill:var(--ink)}
+.cover b{font:700 clamp(56px,7vw,96px)/.9 "Barlow Semi Condensed",sans-serif;text-transform:uppercase;display:block}
+.cover small{font-size:16px;font-weight:600;display:block;margin-top:12px}
+.eps{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--ink)}
+.eps li{display:grid;grid-template-columns:3.2em minmax(0,1fr) auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.eps .n{font:700 22px/1 "Barlow Semi Condensed",sans-serif}
+.eps h3{font-size:19px;margin:0 0 4px}
+.eps p{margin:0;font-size:15px;color:var(--mut)}
+.eps .d{font-size:14px;color:var(--mut);white-space:nowrap}
+.player{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.player:first-child{border-top:1px solid var(--ink)}
+.pb{width:48px;height:48px;border:0;background:var(--pear);display:grid;place-items:center;cursor:pointer}
+.pb svg{width:20px;height:20px}
+.pb .pa{display:none}.playing .pb .pl{display:none}.playing .pb .pa{display:block}
+.pt b{display:block;font-size:17px}
+.pt span{font-size:14px;color:var(--mut)}
+.bar{height:4px;background:var(--line);margin-top:10px;position:relative;cursor:pointer}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--ink)}
+.tm{font-size:14px;color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sound{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;margin-top:32px}
+.ab{background:var(--soft);padding:28px}
+.seg{display:flex;margin:18px 0}
+.seg button{flex:1;min-height:48px;border:2px solid var(--ink);background:#fff;font:700 16px Barlow,sans-serif;cursor:pointer}
+.seg button+button{border-left:0}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.seg button.l[aria-pressed=true]{background:var(--pear);color:var(--ink)}
+.wave{display:flex;align-items:center;gap:3px;height:90px}
+.wave i{flex:1;background:#b9b9b9}
+.ab.lossy .wave i{background:#9a9a9a}
+.ab.full .wave i{background:var(--ink)}
+.tile{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.tile>div{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.tile img{width:100%;height:100%;min-height:300px;object-fit:cover}
+.share{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:56px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.share b{margin-right:8px}
+.share a{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--ink)}
+.share svg{width:18px;height:18px;fill:currentColor}
+.links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 32px;list-style:none;margin:0;padding:0}
+.links a{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
+.links a:hover{text-decoration:underline}
+footer{background:var(--soft);margin-top:72px;padding:40px 0 32px;font-size:14px}
+.ft{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.ft nav{display:flex;flex-wrap:wrap;gap:6px 20px}
+.ft nav a{text-decoration:none}
+.disc{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);max-width:none}
+.tl{list-style:none;margin:32px 0 0;padding:0;border-top:1px solid var(--ink)}
+.tl li{display:grid;grid-template-columns:7em minmax(0,1fr);gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.tl b{font:700 40px/1 "Barlow Semi Condensed",sans-serif}
+.tl p{margin:0}
+[hidden]{display:none!important}
+@media(max-width:900px){.util{display:none}.links{grid-template-columns:repeat(2,minmax(0,1fr))}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.intro,.cols,.pod,.sound,.tile,.three{grid-template-columns:minmax(0,1fr)}.r21{aspect-ratio:4/3}.ph .say{position:static;max-width:none;padding:16px 0 0}.cover{aspect-ratio:auto;min-height:280px}.tl li{grid-template-columns:minmax(0,1fr);gap:6px}}
+@media(max-width:480px){.facts,.links{grid-template-columns:minmax(0,1fr)}.hd{gap:16px}}
+.topband{background:var(--pear)}
+.topband .crumb{margin:0;padding:14px 0;color:var(--ink)}
+.herobg{background:linear-gradient(var(--pear) 50%,var(--pear2) 50%)}
+.heroph{position:relative}
+.heroph h1{position:absolute;left:max(4vw,16px);top:0;background:var(--pear);padding:10px 22px 14px 0;font-size:clamp(56px,9vw,120px);line-height:.9}
+.gband{background:var(--pear2)}
+.gband .intro{padding-top:32px;padding-bottom:40px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.lead{font:700 clamp(24px,2.6vw,32px)/1.15 "Barlow Semi Condensed",sans-serif;text-transform:uppercase;margin:0}
+.fact.p{background:var(--pale)}
+.ph .say{background:var(--pear)}
+.green{background:var(--pear);margin-top:clamp(48px,6vw,80px);padding-bottom:clamp(48px,6vw,80px)}
+.pale{background:var(--pale);margin-top:clamp(48px,6vw,80px);padding-bottom:clamp(48px,6vw,80px)}
+.mis{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:48px;align-items:start}
+.big{font:700 clamp(26px,3vw,38px)/1.08 "Barlow Semi Condensed",sans-serif;text-transform:uppercase;margin:0}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:36px}
+.pill{background:#fff}
+.pill img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.pill div{padding:20px 22px 24px}
+.pill h3{font-size:30px}
+.pill p{margin:0;font-size:16px}
+.who{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.blk{padding:32px}
+.blk.g{background:var(--pear)}.blk.p{background:var(--pale)}
+.blk .k{display:block;font-size:14px;font-weight:700;margin-bottom:10px}
+.blk p{margin:0}
+.vals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.vals div{border-top:3px solid var(--ink);padding-top:18px}
+.vals i{display:block;width:28px;height:28px;background:var(--pear);margin-bottom:14px}
+.vals p{font-size:16px;color:#333;margin:0}
+.ab{background:var(--pear)}
+.ab .wave i{background:rgba(17,17,17,.35)}
+.ab.full .wave i{background:var(--ink)}
+.ab .pb{background:var(--ink)}
+.ab .pb svg{fill:#fff}
+.seg button.l[aria-pressed=true]{background:#fff;color:var(--ink)}
+.tile{background:var(--pale)}
+footer{background:var(--pear)}
+.disc{border-color:rgba(0,0,0,.2);color:#1f2a08}
+.subnav{background:var(--pale)}
+.nav a.on{border-color:var(--pear)}
+@media(max-width:900px){.pillars{grid-template-columns:minmax(0,1fr)}.pill{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}.pill img{height:100%}.vals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.gband .intro,.mis,.who{grid-template-columns:minmax(0,1fr)}.heroph h1{position:static;padding:8px 0 12px}.herobg{background:var(--pear)}}
+@media(max-width:480px){.pill{display:block}.vals{grid-template-columns:minmax(0,1fr)}}
+.pc{position:relative;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;padding:20px;text-decoration:none;color:var(--ink);overflow:hidden}
+.pc .pt1{display:flex;align-items:center;gap:8px;font:700 16px/1 "Barlow Semi Condensed",sans-serif;text-transform:uppercase}
+.pc .pt1 svg{width:18px;height:22px;fill:currentColor}
+.pc b{font:700 clamp(64px,8vw,110px)/.85 "Barlow Semi Condensed",sans-serif;text-transform:uppercase}
+.pc .pt2{font:700 18px/1.1 "Barlow Semi Condensed",sans-serif;text-transform:uppercase;max-width:14em}
+.c1{background:var(--pear)}.c2{background:var(--ink);color:var(--pear)}.c3{background:var(--pale)}.c4{background:#fff;box-shadow:inset 0 0 0 3px var(--ink)}.c5{background:var(--pear2)}.c6{background:var(--pear);color:var(--ink)}
+.c2 .pt1,.c2 .pt2{color:#fff}
+.c3 b{color:#3d5410}.c6 b{-webkit-text-stroke:2px var(--ink);color:transparent}
+.gband2{background:var(--pear2);padding:32px 0 48px}
+.gband2 h1{font-size:clamp(56px,9vw,120px);line-height:.9;margin-bottom:28px}
+.feat{margin:0;max-width:30ch;font:700 clamp(26px,3.4vw,44px)/1.08 "Barlow Semi Condensed",sans-serif;text-transform:uppercase}
+.feat cite{display:block;margin-top:14px;font:600 16px Barlow,sans-serif;text-transform:none;font-style:normal}
+.arts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.art{display:flex;flex-direction:column;border-top:3px solid var(--ink);padding-top:16px}
+.av{aspect-ratio:4/3;padding:20px;display:flex;flex-direction:column;justify-content:flex-end}
+.av b{font:700 clamp(30px,3vw,40px)/1 "Barlow Semi Condensed",sans-serif;text-transform:uppercase}
+.av span{font-size:15px;margin-top:6px;font-weight:600}
+.a1{background:var(--pear)}.a2{background:var(--ink);color:#fff}.a3{background:var(--pale)}.a4{background:var(--pear2)}.a5{background:#fff;box-shadow:inset 0 0 0 3px var(--ink)}.a6{background:var(--pear)}
+.art blockquote{margin:18px 0 10px;font-size:19px;line-height:1.45}
+.who2{font-size:14px;color:var(--mut);margin:auto 0 0}
+.top2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.blk.w2{background:#fff}
+.hx{font-size:clamp(34px,4vw,52px)}
+.now{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center}
+.h1s{font-size:clamp(36px,4.6vw,60px);margin:12px 0 18px}
+.avail{display:inline-block;background:var(--ink);color:var(--pear);font-weight:700;font-size:14px;padding:6px 12px}
+.player.big2{border-top:1px solid var(--ink)!important;margin-top:20px}
+.eplist{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin-top:24px}
+.ep{display:flex;flex-direction:column}
+.ep.lk .pc>*:not(.lock){opacity:.35}
+.ep.lk .pc{filter:saturate(.6)}
+.lock{position:absolute;inset:0;display:grid;place-items:center}
+.lock svg{width:56px;height:56px;padding:12px;background:var(--ink);color:#fff;fill:#fff}
+.lock svg path{stroke:#fff}
+.ept{padding-top:14px}
+.ept .date{display:block;font-size:14px;font-weight:700;color:#3d5410;margin-bottom:6px}
+.ept h3{font-size:19px;margin-bottom:6px}
+.ept p{font-size:15px;color:var(--mut);margin:0}
+.ep .pc b{font-size:clamp(36px,3.6vw,52px)}
+.gband2 .h1s{font-size:clamp(30px,3.6vw,48px);line-height:1.02;margin:12px 0 18px;overflow-wrap:anywhere}
+.ep .pc .pt2{font-size:15px}
+@media(max-width:1000px){.eplist{grid-template-columns:repeat(3,minmax(0,1fr))}.arts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.now,.top2{grid-template-columns:minmax(0,1fr)}.eplist{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.arts{grid-template-columns:minmax(0,1fr)}}
+.nav{gap:0;overflow:visible}
+.dd{display:flex;height:100%}
+.dd .top{display:flex;align-items:center;padding:0 14px;text-decoration:none;font-weight:600;font-size:15px;border-bottom:3px solid transparent}
+.dd .top.on{border-color:var(--pear)}
+.dd:hover .top{background:var(--pale)}
+.menu{position:absolute;left:0;right:0;top:100%;background:var(--pale);border-top:4px solid var(--pear);border-bottom:1px solid var(--line);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .2s,transform .2s,visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:48px;padding-top:32px;padding-bottom:36px}
+.mt{display:block;font:700 34px/1 "Barlow Semi Condensed",sans-serif;text-transform:uppercase;margin-bottom:10px}
+.mw p{margin:0;font-size:16px}
+.ml{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;align-content:start}
+.ml a{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.15);text-decoration:none;font-weight:600}
+.ml a:hover{color:#3d5410}
+header{position:sticky}
+.art blockquote{font:italic 400 21px/1.4 Newsreader,Georgia,serif;margin:18px 0 12px}
+.feat{font:italic 500 clamp(28px,3.4vw,44px)/1.15 Newsreader,Georgia,serif;text-transform:none;max-width:28ch}
+.who2 strong{color:var(--ink)}
+.av{position:relative}
+.ph2{position:absolute;top:16px;left:20px;font-size:13px!important;font-weight:600;opacity:.6}
+@media(max-width:900px){.dd .top{padding:0 10px}.nav{overflow-x:auto}.menu{display:none}}
+@media(prefers-reduced-motion:reduce){.menu{transition:none}}
+.av{aspect-ratio:1/1}
+.av.hasimg{color:var(--ink)}
+.av.hasimg b{font-size:clamp(22px,2.2vw,28px)}
+.av.hasimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.av.hasimg b,.av.hasimg>span{position:relative;align-self:flex-start;background:var(--pear);padding:4px 10px}
+.av.hasimg>span{margin-top:0;background:#fff}
+.mbtn{display:none;margin-left:auto;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:2px solid var(--ink);background:#fff;font:700 15px Barlow,sans-serif;cursor:pointer}
+.mbtn svg{width:20px;height:20px;stroke:var(--ink);stroke-width:2.4;fill:none}
+.mbtn[aria-expanded=true]{background:var(--pear);border-color:var(--pear)}
+.mnav{background:var(--pale);border-top:4px solid var(--pear);max-height:calc(100svh - 64px);overflow-y:auto}
+.mnav .w{padding-top:8px;padding-bottom:20px}
+.mg{display:flex;flex-direction:column;border-bottom:1px solid rgba(0,0,0,.15);padding:10px 0}
+.mg a{padding:10px 0;text-decoration:none;font-size:16px;min-height:44px;display:flex;align-items:center}
+.mg a.mh{font:700 22px/1 "Barlow Semi Condensed",sans-serif;text-transform:uppercase}
+@media(max-width:900px){.nav{display:none}.mbtn{display:flex}.hd{gap:12px}}
+@media(max-width:600px){.pill{display:block}.pill img{height:auto;aspect-ratio:4/3}
+.eplist{grid-template-columns:minmax(0,1fr);gap:0}
+.ep{display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ep .pc{padding:10px}.ep .pc .pt1{font-size:10px;gap:4px}.ep .pc .pt1 svg{width:10px;height:12px}.ep .pc b{font-size:28px;white-space:nowrap}.ep .pc .pt2{display:none}
+.lock svg{width:40px;height:40px;padding:9px}
+.ept{padding-top:0}
+.now .pc{max-width:320px}
+.gband2 h1,.heroph h1{font-size:64px}
+.mw{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="pear" viewBox="0 0 40 48"><path d="M21 7C24 2.5 29.5 2.5 32 4.5 29 8 24.5 9 21 7Z"/><path d="M20 13 21.2 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M20 12C14.5 12 13.5 17.5 13.5 21 13.5 25 8 28 8 36 8 43 13.5 47 20 47 26.5 47 32 43 32 36 32 28 26.5 25 26.5 21 26.5 17.5 25.5 12 20 12Z"/></symbol>
+<symbol id="play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol><symbol id="pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></symbol></svg>
+
+<header>
+  <div class="w hd">
+    <a class="logo" href="#perfil" aria-label="Pear Music"><svg aria-hidden="true"><use href="#pear"/></svg>Pear Music</a>
+    <nav class="nav" aria-label="Principal">
+      <div class="dd"><a class="top" href="#perfil" data-n="perfil">Quiénes somos</a><div class="menu"><div class="w mw"><div><b class="mt">Quiénes somos</b><p>Nuestro propósito, nuestra misión y la historia detrás de Pear Music.</p></div><div class="ml"><a href="#perfil">Perfil<span aria-hidden="true">→</span></a><a href="#historia">Historia<span aria-hidden="true">→</span></a><a href="#a-quien">A quién le hablamos<span aria-hidden="true">→</span></a><a href="#valores">Nuestros valores<span aria-hidden="true">→</span></a><a href="#contacto">Contacto<span aria-hidden="true">→</span></a></div></div></div></div>
+      <div class="dd"><a class="top" href="#artistas" data-n="artistas">Artistas</a><div class="menu"><div class="w mw"><div><b class="mt">Artistas</b><p>Lo que dicen de nosotros quienes hacen la música, y lo que hacemos por ellos.</p></div><div class="ml"><a href="#dicen">Lo que dicen de nosotros<span aria-hidden="true">→</span></a><a href="#top">Lo más escuchado<span aria-hidden="true">→</span></a><a href="#para-artistas">Para artistas<span aria-hidden="true">→</span></a></div></div></div></div>
+      <div class="dd"><a class="top" href="#podcast" data-n="podcast">Podcast</a><div class="menu"><div class="w mw"><div><b class="mt">Entre canciones</b><p>Un curador, dos invitados y las canciones que los llevan a un lugar, a un momento o a una historia.</p></div><div class="ml"><a href="#podcast">Escuchá el episodio 1<span aria-hidden="true">→</span></a><a href="#proximos">Próximos episodios<span aria-hidden="true">→</span></a></div></div></div></div>
+      <div class="dd"><a class="top" href="#sonido" data-n="sonido">Nuestro sonido</a><div class="menu"><div class="w mw"><div><b class="mt">Nuestro sonido</b><p>Las piezas de nuestra identidad sonora, para escuchar con los ojos cerrados.</p></div><div class="ml"><a href="#sonido">Logo sonoro y cortina<span aria-hidden="true">→</span></a><a href="#ab">Escuchá la diferencia<span aria-hidden="true">→</span></a></div></div></div></div>
+      <div class="dd"><a class="top" href="#datos" data-n="datos">Inversores</a></div>
+      <div class="dd"><a class="top" href="#links" data-n="links">Prensa</a></div>
+    </nav>
+    <div class="util"><a href="#perfil">ES</a><a href="#links">Buscar</a></div>
+    <button class="mbtn" id="mbtn" aria-expanded="false" aria-controls="mnav"><span>Menú</span><svg viewBox="0 0 24 24" aria-hidden="true"><path class="l1" d="M3 7h18"/><path class="l2" d="M3 12h18"/><path class="l3" d="M3 17h18"/></svg></button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Menú del celular" hidden>
+    <div class="w">
+      <div class="mg"><a class="mh" href="#perfil">Quiénes somos</a><a href="#historia">Historia</a><a href="#a-quien">A quién le hablamos</a><a href="#valores">Nuestros valores</a><a href="#datos">Datos clave</a></div>
+      <div class="mg"><a class="mh" href="#artistas">Artistas</a><a href="#dicen">Lo que dicen de nosotros</a><a href="#top">Lo más escuchado</a><a href="#para-artistas">Para artistas</a></div>
+      <div class="mg"><a class="mh" href="#podcast">Podcast</a><a href="#podcast">Escuchá el episodio 1</a><a href="#proximos">Próximos episodios</a></div>
+      <div class="mg"><a class="mh" href="#sonido">Nuestro sonido</a><a href="#ab">Escuchá la diferencia</a></div>
+      <div class="mg"><a class="mh" href="#links">Prensa</a><a class="mh" href="#contacto">Contacto</a></div>
+    </div>
+  </nav>
+</header>
+
+<main id="perfil">
+  <div class="topband"><div class="w"><div class="crumb"><a href="#perfil">Inicio</a> / Quiénes somos</div></div></div>
+  <div class="herobg"><div class="w heroph">
+    <img class="wide r21" src="img/FOTO2.jpg" alt="Una chica con auriculares sonríe con los ojos cerrados en el ómnibus, con sol entrando por la ventana" width="1448" height="1086" style="object-position:center 40%">
+    <h1>Perfil</h1>
+  </div></div>
+  <div class="gband"><div class="w intro">
+    <p class="lead">Todo lo que hacemos nace de la música. Te acompaña cuando estudiás, trabajás, viajás o te relajás.</p>
+    <p>Creemos que puede vivirse de una forma más rica: descubierta por personas, cerca de quienes la hacen y con el sonido tal como fue grabado. Esa es la idea que ordena todo lo que hacemos.</p>
+  </div></div>
+
+  <section id="datos"><div class="w">
+    <h2>Datos clave</h2>
+    <div class="facts">
+      <div class="fact"><b>+100 M</b><span>canciones en el catálogo</span></div>
+      <div class="fact g"><b>167</b><span>países donde estamos disponibles</span></div>
+      <div class="fact"><b>0</b><span>anuncios: sin publicidad y sin vender tus datos</span></div>
+      <div class="fact p"><b>2015</b><span>año de lanzamiento, en más de 100 países a la vez</span></div>
+      <div class="fact"><b>~100 M</b><span>suscriptores en el mundo (estimación)</span></div>
+      <div class="fact g"><b>2.º</b><span>servicio de streaming por suscriptores pagos</span></div>
+    </div>
+    <p class="small" style="margin-top:14px">Suscriptores y posición de mercado: estimaciones de terceros (MIDiA Research, Duetti y medios especializados, 2025–2026). La compañía no publica cifras oficiales desde 2023.</p>
+  </div></section>
+
+  <section id="proposito"><div class="w">
+    <h2>Nuestro propósito</h2>
+    <div class="ph">
+      <img class="wide r21" src="img/FOTO6.jpg" alt="Chica con auriculares y los ojos cerrados, rodeada de instrumentos que flotan unidos por estelas de luz verde" width="1448" height="1086" style="object-position:center 30%">
+      <div class="say">No cambies de música.<br>Cambiá la forma de vivirla.</div>
+    </div>
+    <div class="cols">
+      <p>Nuestro propósito guía cómo diseñamos la app, cómo trabajamos con artistas y sellos y cómo le hablamos a cada persona que nos escucha. No le pedimos a nadie que deje lo que le gusta: la invitación es a escucharlo de otra manera.</p>
+      <p>Por eso nuestro rival no es otra aplicación. Es la rutina: la comodidad de escuchar siempre lo mismo, de fondo, sin prestarle atención. Queremos que la música vuelva a ser algo que se vive.</p>
+    </div>
+  </div></section>
+
+  <section id="mision" class="green"><div class="w">
+    <h2>Nuestra misión</h2>
+    <div class="mis">
+      <p class="big">Llevar la mejor experiencia de escucha a cada persona.</p>
+      <p>Curada por personas y no solo por un algoritmo, sin publicidad y con el sonido como lo grabó el artista. Del otro lado, cuidamos a quienes hacen la música: pagamos a los artistas también durante la prueba gratuita y por reproducción pagamos más que el promedio del mercado.</p>
+    </div>
+    <div class="pillars">
+      <article class="pill"><img src="img/FOTO3.jpg" alt="Manos escribiendo una lista de canciones en una libreta, entre discos y post-its" width="1448" height="1086"><div><h3>Descubrir</h3><p>Playlists armadas por personas que viven de escuchar música. El algoritmo te muestra lo parecido; un curador, lo que no sabías que te faltaba.</p></div></article>
+      <article class="pill"><img src="img/FOTO7.jpg" alt="Chica sentada en la rambla mirando el celular, con los auriculares al cuello" width="1448" height="1086"><div><h3>Conectar</h3><p>Radio en vivo, entrevistas y contenido exclusivo con quienes hacen la música, para escuchar una canción sabiendo cómo nació.</p></div></article>
+      <article class="pill"><img src="img/FOTO8.jpg" alt="Chica de espaldas con auriculares caminando por la rambla al atardecer" width="1122" height="1402" style="object-position:center 20%"><div><h3>Vivir</h3><p>Lossless y Spatial Audio incluidos en la suscripción, sin costo extra. La misma canción, con detalles que no sabías que estaban ahí.</p></div></article>
+    </div>
+  </div></section>
+
+  <section id="a-quien"><div class="w">
+    <h2>A quién le hablamos</h2>
+    <div class="who">
+      <div class="blk g"><span class="k">Nuestro protagonista</span><h3>Personas que escuchan música todos los días</h3><p>Jóvenes y adultos jóvenes que usan streaming, valoran descubrir cosas nuevas y llevan la música a todas partes: en el bondi, estudiando, trabajando, antes de dormir. Muchos ya nos conocen, pero usan otra plataforma como principal.</p></div>
+      <div class="blk p"><span class="k">Lo que queremos cambiar</span><h3>La rutina de escuchar siempre lo mismo</h3><p>"Ya tengo todo armado" es la frase favorita de la rutina. No queremos que nadie renuncie a lo que escucha: queremos que se anime a empezar de nuevo y a vivirlo distinto. Por eso la invitación es probar un mes, sin compromiso.</p></div>
+    </div>
+  </div></section>
+
+  <section id="valores"><div class="w">
+    <h2>Nuestros valores</h2>
+    <div class="vals">
+      <div><i></i><h3>Privacidad</h3><p>Sin publicidad no necesitamos vender lo que escuchás. Tus datos no son el producto.</p></div>
+      <div><i></i><h3>Curaduría humana</h3><p>Detrás de cada playlist hay personas con criterio, no solo una fórmula de recomendación.</p></div>
+      <div><i></i><h3>Pago justo</h3><p>Pagamos a los artistas también durante la prueba gratuita y por reproducción más que el promedio del mercado.</p></div>
+      <div><i></i><h3>Calidad incluida</h3><p>El mejor sonido no es un plan aparte: Lossless y Spatial Audio vienen con la suscripción.</p></div>
+    </div>
+  </div></section>
+
+  <section id="podcast-home" class="pale"><div class="w">
+    <h2>Podcast</h2>
+    <div class="pod">
+      <a class="pc c1" href="#podcast" aria-label="Ir al podcast Entre canciones">
+        <span class="pt1"><svg aria-hidden="true"><use href="#pear"/></svg>Entre canciones</span>
+        <b>Ep. 01</b><span class="pt2">¿A dónde te lleva una canción?</span>
+      </a>
+      <div>
+        <p style="font-size:20px;line-height:1.45"><strong>Cada canción te lleva a algún lado.</strong> En cada episodio, un curador de Pear Music invita a dos personas y les pide que cuenten la historia de una canción: a qué lugar, a qué momento o a qué persona las lleva cuando suena.</p>
+        <p>Es la parte "Conectar" de nuestra forma de vivir la música, en formato de conversación. Un episodio nuevo cada jueves.</p>
+        <a class="btn" href="#podcast">Escuchá el primer episodio <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="sonido"><div class="w">
+    <h2>Nuestro sonido</h2>
+    <p>Una marca de música también se reconoce con los ojos cerrados. Estas son las piezas de nuestra identidad sonora.</p>
+    <div class="sound">
+      <div>
+        <div class="player" data-src="audio/logo-sonoro.mp3"><button class="pb" aria-label="Reproducir el logo sonoro"><svg class="pl"><use href="#play"/></svg><svg class="pa"><use href="#pause"/></svg></button><div class="pt"><b>Logo sonoro</b><span>Cierra cada pieza, junto con la pera</span><div class="bar"><i></i></div></div><span class="tm">0:06</span></div>
+        <div class="player" data-src="audio/cortina-ia.mp3"><button class="pb" aria-label="Reproducir la cortina musical"><svg class="pl"><use href="#play"/></svg><svg class="pa"><use href="#pause"/></svg></button><div class="pt"><b>Cortina musical</b><span>Para videos, reels y el podcast</span><div class="bar"><i></i></div></div><span class="tm">0:30</span></div>
+        <div class="player" data-src="audio/sfx-favoritos.mp3"><button class="pb" aria-label="Reproducir el efecto de guardar en favoritos"><svg class="pl"><use href="#play"/></svg><svg class="pa"><use href="#pause"/></svg></button><div class="pt"><b>Guardar en favoritos</b><span>El sonido de encontrar algo nuevo</span><div class="bar"><i></i></div></div><span class="tm">0:02</span></div>
+      </div>
+      <div class="ab lossy" id="ab">
+        <h3>Escuchá la diferencia</h3>
+        <p style="margin:0">El mismo fragmento, comprimido y en Lossless. Cambiá mientras suena.</p>
+        <div class="seg" role="group" aria-label="Calidad"><button id="bL" aria-pressed="true">Comprimido</button><button id="bH" class="l" aria-pressed="false">Lossless</button></div>
+        <div class="wave" id="wave" aria-hidden="true"></div>
+        <div class="player" id="abp" style="border:0;padding-bottom:0"><button class="pb" aria-label="Reproducir la comparación"><svg class="pl"><use href="#play"/></svg><svg class="pa"><use href="#pause"/></svg></button><div class="pt"><b id="abt">Comprimido</b><span>Fragmento de 8 segundos de nuestra cortina</span><div class="bar"><i></i></div></div><span class="tm">0:08</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section><div class="w"><div class="tile">
+    <div>
+      <h2>¿Querés conocer nuestra historia?</h2>
+      <p>Más de diez años de música: de una radio en vivo conducida por personas al sonido sin pérdida para todos.</p>
+      <a class="btn" href="#historia">Descubrí nuestra historia <span aria-hidden="true">→</span></a>
+    </div>
+    <img src="img/FOTO1.jpg" alt="Chica con auriculares en el ómnibus, mirando por la ventana un día gris" width="1448" height="1086" style="object-position:center 40%">
+  </div></div></section>
+</main>
+
+<main id="historia" hidden>
+  <div class="w">
+    <div class="crumb"><a href="#perfil">Inicio</a> / <a href="#perfil">Quiénes somos</a> / Historia</div>
+    <div class="intro"><h1>Historia</h1><p>De la compra de Beats a una app que se escucha en 167 países: los momentos que nos hicieron.</p></div>
+    <img class="wide r21" src="img/FOTO7.jpg" alt="Chica sentada en la rambla de Montevideo mirando el celular" width="1448" height="1086" style="object-position:center 30%">
+    <ol class="tl">
+      <li><b>2014</b><p>Nace el proyecto con la compra de Beats Music y Beats Electronics, impulsada por Jimmy Iovine y Dr. Dre.</p></li>
+      <li><b>2015</b><p>Lanzamiento el 30 de junio en más de 100 países a la vez, con una radio global en vivo las 24 horas, conducida por personas.</p></li>
+      <li><b>2015</b><p>Tras la carta abierta de Taylor Swift, decidimos pagar a los artistas también durante la prueba gratuita.</p></li>
+      <li><b>2016</b><p>Primer gran rediseño: una app más simple y una identidad más limpia.</p></li>
+      <li><b>2021</b><p>Lossless y Spatial Audio llegan a todos los suscriptores, sin costo extra.</p></li>
+      <li><b>2023</b><p>Lanzamos una app propia para la música clásica.</p></li>
+      <li><b>2025</b><p>Nueva interfaz con superficies translúcidas: el cambio más grande desde 2016.</p></li>
+    </ol>
+    <p style="margin-top:32px"><a class="btn g" href="#perfil">Volver al perfil</a></p>
+  </div>
+</main>
+
+<main id="artistas" hidden>
+  <div class="topband"><div class="w"><div class="crumb"><a href="#perfil">Inicio</a> / Artistas</div></div></div>
+  <div class="gband2"><div class="w">
+    <h1>Artistas</h1>
+    <blockquote class="feat">“Una vez que escuchás Dolby Atmos, nunca más vas a querer escuchar música en estéreo.”<cite>Masego, músico</cite></blockquote>
+  </div></div>
+  <section><div class="w">
+    <div class="mis">
+      <p class="big">La música la hacen personas. Las tratamos como tales.</p>
+      <p>Más de 100 millones de canciones de artistas de todo el mundo. Para todos rige lo mismo: curaduría humana, el sonido como lo grabaron y un pago por reproducción más alto que el promedio del mercado, también durante la prueba gratuita.</p>
+    </div>
+  </div></section>
+  <section id="dicen"><div class="w">
+    <h2>Lo que dicen de nosotros</h2>
+    <div class="arts"><article class="art"><div class="av a1 hasimg"><img src="img/artistas/jbalvin.jpg" alt="Retrato de J Balvin con remera naranja" style="object-position:center 35%"><b>J Balvin</b><span>Reggaetón · Colombia</span></div><blockquote>“Estoy muy entusiasmado de ser parte de este proyecto con Apple Music, porque siempre quiero estar un paso adelante. Escucharme a mí mismo y a mi música en Dolby Atmos por primera vez fue una locura, me voló la cabeza.”</blockquote><p class="who2"><strong>J Balvin</strong> · Sobre Spatial Audio. Comunicado oficial, junio de 2021.</p></article><article class="art"><div class="av a2 hasimg"><img src="img/artistas/billie.jpg" alt="Retrato de Billie Eilish sosteniendo una pequeña escultura dorada" style="object-position:center 10%"><b>Billie Eilish</b><span>Pop · Estados Unidos</span></div><blockquote>“Desde el primer día, Apple Music apoyó mi música y mi arte, y me siento honrada y agradecida de recibir este reconocimiento como Artista del Año.”</blockquote><p class="who2"><strong>Billie Eilish</strong> · Al ser nombrada Artista del Año, noviembre de 2024.</p></article><article class="art"><div class="av a3 hasimg"><img src="img/artistas/badbunny.jpg" alt="Retrato de Bad Bunny con traje blanco" style="object-position:center 12%"><b>Bad Bunny</b><span>Música urbana · Puerto Rico</span></div><blockquote>“Cuando empecé, no tenía una base de fans global. Estoy agradecido por todo lo que logré y todo lo que viví.”</blockquote><p class="who2"><strong>Bad Bunny</strong> · Video por su premio a Artista del Año, noviembre de 2022.</p></article><article class="art"><div class="av a4 hasimg"><img src="img/artistas/taylor.jpg" alt="Retrato de Taylor Swift con labios rojos y aros largos" style="object-position:center 8%"><b>Taylor Swift</b><span>Pop · Estados Unidos</span></div><blockquote>“Estoy feliz y aliviada. Gracias por sus palabras de apoyo hoy. Nos escucharon.”</blockquote><p class="who2"><strong>Taylor Swift</strong> · Después de que la plataforma decidiera pagar a los artistas durante la prueba gratuita. Twitter, junio de 2015.</p></article><article class="art"><div class="av a5 hasimg"><img src="img/artistas/vince.jpg" alt="Vince Staples agachado frente a una pared, con campera azul" style="object-position:center 10%"><b>Vince Staples</b><span>Rap · Estados Unidos</span></div><blockquote>“Spatial Audio hace mucho más fácil captar los matices y las sutilezas, las cosas que antes se te podían escapar. Simplemente estoy contento de que podamos tener nuestras canciones en Spatial Audio.”</blockquote><p class="who2"><strong>Vince Staples</strong> · Testimonio para la plataforma de artistas.</p></article><article class="art"><div class="av a6 hasimg"><img src="img/artistas/masego.jpg" alt="Retrato de Masego con lentes de sol y camisa animal print" style="object-position:center 12%"><b>Masego</b><span>Jazz y R&B · Estados Unidos</span></div><blockquote>“Una vez que escuchás Dolby Atmos, nunca más vas a querer escuchar música en estéreo.”</blockquote><p class="who2"><strong>Masego</strong> · Al escuchar su música en Dolby Atmos por primera vez.</p></article></div>
+    <p class="small" style="margin-top:16px">Frases reales, traducidas del inglés.</p>
+  </div></section>
+  <section class="green" id="top"><div class="w">
+    <h2>Lo más escuchado en 2024</h2>
+    <div class="top2">
+      <div class="blk w2"><span class="k">Artista más escuchada del año</span><h3 class="hx">Taylor Swift</h3><p>Con The Tortured Poets Department, la artista más reproducida de 2024 en el servicio.</p></div>
+      <div class="blk w2"><span class="k">Canción más escuchada del año</span><h3 class="hx">“Not Like Us”</h3><p>Kendrick Lamar tuvo la canción más reproducida de 2024 en el mundo.</p></div>
+    </div>
+  </div></section>
+  <section id="para-artistas"><div class="w"><div class="tile">
+    <div>
+      <h2>Para artistas</h2>
+      <p>Una plataforma propia con datos de audiencia para artistas y sellos: quién te escucha, dónde y con qué canciones, para que conozcas a tu público y decidas tu próximo paso.</p>
+      <a class="btn" href="#artistas">Conocé las herramientas <span aria-hidden="true">→</span></a>
+    </div>
+    <img src="img/FOTO4.jpg" alt="Un curador musical elige un vinilo de un cajón en su estudio" width="1448" height="1086" style="object-position:center 30%">
+  </div></div></section>
+</main>
+
+<main id="podcast" hidden>
+  <div class="topband"><div class="w"><div class="crumb"><a href="#perfil">Inicio</a> / Podcast</div></div></div>
+  <div class="gband2"><div class="w now">
+    <div class="pc c1 big1"><span class="pt1"><svg aria-hidden="true"><use href="#pear"/></svg>Entre canciones</span><b>Ep. 01</b><span class="pt2">¿A dónde te lleva una canción?</span></div>
+    <div>
+      <span class="avail">Disponible · jueves 12 de noviembre</span>
+      <h1 class="h1s">¿A dónde te lleva una canción?</h1>
+      <p>Nuestro curador invitó a dos personas y les pidió que eligieran una canción y contaran a dónde las lleva: un lugar, un momento, una historia. El primer episodio de Entre canciones, el podcast de Pear Music.</p>
+      <div class="player big2" data-src="audio/entre-canciones-ep1.mp3"><button class="pb" aria-label="Reproducir el episodio 1"><svg class="pl"><use href="#play"/></svg><svg class="pa"><use href="#pause"/></svg></button><div class="pt"><b>Escuchar episodio 1</b><span>Entre canciones · Pear Music · 4 min</span><div class="bar"><i></i></div></div><span class="tm">4:10</span></div>
+    </div>
+  </div></div>
+  <section id="proximos"><div class="w">
+    <h2>Próximos episodios</h2>
+    <p>Un episodio nuevo se desbloquea cada jueves.</p>
+    <div class="eplist"><div class="ep lk"><div class="pc c2"><span class="pt1"><svg aria-hidden="true"><use href="#pear"/></svg>Entre canciones</span><b>Ep. 02</b><span class="pt2">Cómo se arma una playlist</span><span class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span></div><div class="ept"><span class="date">Se desbloquea el jueves 19 de noviembre</span><h3>Cómo se arma una playlist</h3><p>Un curador cuenta su método: escuchar, descartar, ordenar y volver a empezar.</p></div></div><div class="ep lk"><div class="pc c3"><span class="pt1"><svg aria-hidden="true"><use href="#pear"/></svg>Entre canciones</span><b>Ep. 03</b><span class="pt2">Lo que se pierde al comprimir</span><span class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span></div><div class="ept"><span class="date">Se desbloquea el jueves 26 de noviembre</span><h3>Lo que se pierde al comprimir</h3><p>Lossless explicado con una sola canción y unos buenos auriculares.</p></div></div><div class="ep lk"><div class="pc c4"><span class="pt1"><svg aria-hidden="true"><use href="#pear"/></svg>Entre canciones</span><b>Ep. 04</b><span class="pt2">Empezar de nuevo</span><span class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span></div><div class="ept"><span class="date">Se desbloquea el jueves 3 de diciembre</span><h3>Empezar de nuevo</h3><p>Armar tu biblioteca desde cero como una oportunidad, no como un trámite.</p></div></div><div class="ep lk"><div class="pc c5"><span class="pt1"><svg aria-hidden="true"><use href="#pear"/></svg>Entre canciones</span><b>Ep. 05</b><span class="pt2">La radio en vivo, por dentro</span><span class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span></div><div class="ept"><span class="date">Se desbloquea el jueves 10 de diciembre</span><h3>La radio en vivo, por dentro</h3><p>Cómo es una hora al aire en nuestra radio, contada por quienes la conducen.</p></div></div><div class="ep lk"><div class="pc c6"><span class="pt1"><svg aria-hidden="true"><use href="#pear"/></svg>Entre canciones</span><b>Ep. 06</b><span class="pt2">El sonido te rodea</span><span class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span></div><div class="ept"><span class="date">Se desbloquea el jueves 17 de diciembre</span><h3>El sonido te rodea</h3><p>Spatial Audio: qué cambia cuando la música deja de venir solo de adelante.</p></div></div></div>
+    <p class="small" style="margin-top:16px">Episodios de ejemplo, creados para este ejercicio.</p>
+  </div></section>
+  <section class="pale"><div class="w mis">
+    <p class="big">Cada canción guarda una historia. Acá se cuenta.</p>
+    <p>Entre canciones es la parte "Conectar" de Pear Music en formato de conversación: un curador trae a dos invitados y cada uno cuenta la historia que le despierta una canción. No importa quién la escribió, sino a dónde te lleva a vos. Gratis para suscriptores, sin publicidad.</p>
+  </div></section>
+</main>
+
+<div class="w">
+  <div class="share"><b>Compartir</b>
+    <a href="https://www.linkedin.com/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5 9h3v10H5zM6.5 4.5a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4zM10 9h3v1.5c.5-.9 1.7-1.8 3.3-1.8 3 0 3.7 2 3.7 4.6V19h-3v-5c0-1.2 0-2.7-1.7-2.7S13 12.6 13 14v5h-3z"/></svg></a>
+    <a href="https://www.facebook.com/" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4.5h-3c-2.5 0-4 1.6-4 4V11H7.5v3.5H10V21h3.5v-6.5h3L17 11h-3.5V9c0-.6.4-1 .5-1z"/></svg></a>
+    <a href="https://x.com/" aria-label="X"><svg viewBox="0 0 24 24"><path d="M4 4h4.5l4 5.6L17.3 4H20l-6.2 7.2L20.5 20H16l-4.3-6-5.2 6H4l6.5-7.5z"/></svg></a>
+  </div>
+  <section id="links" style="padding-top:40px">
+    <h2 style="font-size:28px">Links populares</h2>
+    <ul class="links">
+      <li><a href="#perfil">Perfil <span aria-hidden="true">→</span></a></li>
+      <li><a href="#historia">Historia <span aria-hidden="true">→</span></a></li>
+      <li><a href="#podcast">Podcast <span aria-hidden="true">→</span></a></li>
+      <li><a href="#sonido">Nuestro sonido <span aria-hidden="true">→</span></a></li>
+      <li><a href="#datos">Datos clave <span aria-hidden="true">→</span></a></li>
+      <li><a href="#artistas">Artistas <span aria-hidden="true">→</span></a></li>
+      <li><a href="#links">Sala de prensa <span aria-hidden="true">→</span></a></li>
+      <li><a href="#links">Trabajá con nosotros <span aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+</div>
+
+<footer id="contacto"><div class="w">
+  <div class="ft">
+    <a class="logo" href="#perfil"><svg aria-hidden="true"><use href="#pear"/></svg>Pear Music</a>
+    <nav aria-label="Pie"><a href="#links">Preguntas frecuentes</a><a href="#links">Mapa del sitio</a><a href="#contacto">Contacto</a><a href="#links">Aviso legal</a><a href="#links">Privacidad</a><a href="#links">Cookies</a></nav>
+  </div>
+  <p class="disc">Sitio ficticio hecho para el curso Storytelling en Comunicación Organizacional (UCU) por Domínguez y Machado, 2026. Pear Music es el nombre con el que rebautizamos a Apple Music para este ejercicio: los datos e hitos son los de ese servicio, tomados de fuentes públicas. No es un sitio oficial.</p>
+</div></footer>
+
+<script>
+{
+  const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+  let current = null;
+  function stopAll(except) { document.querySelectorAll('.player.playing').forEach(p => { if (p !== except && p._a) { p._a.pause(); } }); }
+  function wire(p, getAudio) {
+    const btn = p.querySelector('.pb'), bar = p.querySelector('.bar'), fill = bar.querySelector('i'), tm = p.querySelector('.tm');
+    const total = tm.textContent;
+    const bind = a => {
+      if (a._wired) return; a._wired = true;
+      a.addEventListener('timeupdate', () => { if (p._a !== a) return; fill.style.width = (a.currentTime / (a.duration || 1) * 100) + '%'; tm.textContent = fmt(a.currentTime) + ' / ' + total; });
+      a.addEventListener('play', () => { if (p._a === a) p.classList.add('playing'); });
+      a.addEventListener('pause', () => { if (p._a === a) p.classList.remove('playing'); });
+      a.addEventListener('ended', () => { if (p._a === a) { p.classList.remove('playing'); fill.style.width = '0'; tm.textContent = total; } });
+    };
+    p._bind = bind;
+    btn.addEventListener('click', () => {
+      const a = getAudio(); p._a = a; bind(a);
+      if (a.paused) { stopAll(p); a.play().catch(() => {}); } else a.pause();
+    });
+    bar.addEventListener('click', e => { const a = p._a; if (!a || !a.duration) return; const r = bar.getBoundingClientRect(); a.currentTime = (e.clientX - r.left) / r.width * a.duration; });
+  }
+  document.querySelectorAll('.player[data-src]').forEach(p => { const a = new Audio(p.dataset.src); a.preload = 'none'; wire(p, () => a); });
+
+  // A/B comparison: two tracks kept in sync, switch keeps the position
+  const lo = new Audio('audio/comprimido.mp3'), hi = new Audio('audio/lossless.mp3');
+  lo.preload = hi.preload = 'auto';
+  let useHi = false;
+  const ab = document.getElementById('ab'), abp = document.getElementById('abp'), bL = document.getElementById('bL'), bH = document.getElementById('bH'), abt = document.getElementById('abt');
+  wire(abp, () => useHi ? hi : lo);
+  function setQ(h) {
+    if (h === useHi) return;
+    const from = useHi ? hi : lo, to = h ? hi : lo, was = !from.paused;
+    to.currentTime = from.currentTime; abp._a = to; abp._bind(to); from.pause(); useHi = h;
+    if (was) to.play().catch(() => {});
+    bL.setAttribute('aria-pressed', !h); bH.setAttribute('aria-pressed', h);
+    ab.classList.toggle('full', h); ab.classList.toggle('lossy', !h); abt.textContent = h ? 'Lossless' : 'Comprimido';
+    drawWave();
+  }
+  bL.addEventListener('click', () => setQ(false)); bH.addEventListener('click', () => setQ(true));
+  const wave = document.getElementById('wave');
+  let s = 7; const rnd = () => (s = s * 16807 % 2147483647) / 2147483647;
+  const amps = Array.from({ length: 64 }, (_, i) => 0.25 + 0.75 * Math.abs(Math.sin(i * 0.37)) * (0.55 + 0.45 * rnd()));
+  function drawWave() { wave.innerHTML = amps.map(v => '<i style="height:' + Math.round((useHi ? v : Math.min(v, 0.42)) * 100) + '%"></i>').join(''); }
+  drawWave();
+
+  // views: each page is a <main>; an anchor opens the page that holds it
+  const views = [...document.querySelectorAll('main')].map(m => m.id);
+  function route() {
+    const h = location.hash.slice(1);
+    const t = h ? document.getElementById(h) : null;
+    const m = t ? (t.tagName === 'MAIN' ? t : t.closest('main')) : null;
+    const v = m ? m.id : 'perfil';
+    views.forEach(id => { document.getElementById(id).hidden = id !== v; });
+    document.querySelectorAll('.player.playing').forEach(p => p._a && p._a.pause());
+    const tab = v === 'historia' ? 'perfil' : (h === 'sonido' || h === 'ab') ? 'sonido' : (h === 'datos') ? 'datos' : v;
+    document.querySelectorAll('.nav .top').forEach(a => a.classList.toggle('on', a.dataset.n === tab));
+    if (document.activeElement) document.activeElement.blur();
+    if (!t || t.tagName === 'MAIN') window.scrollTo(0, 0); else t.scrollIntoView();
+  }
+  const mbtn = document.getElementById('mbtn'), mnav = document.getElementById('mnav');
+  const setMenu = o => { mnav.hidden = !o; mbtn.setAttribute('aria-expanded', o); mbtn.querySelector('span').textContent = o ? 'Cerrar' : 'Menú'; document.body.classList.toggle('mopen', o); };
+  mbtn.addEventListener('click', () => setMenu(mnav.hidden));
+  mnav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  addEventListener('hashchange', () => setMenu(false));
+  addEventListener('hashchange', route); route();
+}
+</script>
+</body>
+</html>
